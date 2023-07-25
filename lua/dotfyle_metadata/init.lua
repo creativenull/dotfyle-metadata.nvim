@@ -59,6 +59,10 @@ local function get_keymaps()
 	return keymaps
 end
 
+local function format_file()
+
+end
+
 function M.generate()
 	local leader = get_mapleader()
 	local plugin_manager, plugins = get_plugins_info()
@@ -79,13 +83,13 @@ function M.generate()
 	vim.cmd(string.format("edit %s", dotfyle_path))
 
 	-- TODO: Try something else instead of this complexity
-	if vim.fn.executable("jq") then
+	if vim.fn.executable("jq") == 1 then
 		vim.cmd("%!jq")
 		vim.cmd("write")
-	elseif vim.fn.executable("prettier") then
+	elseif vim.fn.executable("prettier") == 1 then
 		vim.cmd("%!prettier --no-color --stdin --stdin-filepath %")
 		vim.cmd("write")
-	elseif vim.fn.has("python3") then
+	elseif vim.fn.has("python3") == 1 then
 		vim.cmd("%!python3 -m json.tool")
 		vim.cmd("write")
 	end
