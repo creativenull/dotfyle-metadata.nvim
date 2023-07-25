@@ -7,12 +7,12 @@ return {
 	end,
 
 	parse = function()
-    local list = {}
+		local list = {}
 
-    for _, plugin in pairs(require('lazy').plugins()) do
-      table.insert(list, plugin[1])
-    end
+		for _, plugin in pairs(require("lazy").plugins()) do
+			table.insert(list, plugin[1])
+		end
 
-    return list
+		return list
 	end,
 }

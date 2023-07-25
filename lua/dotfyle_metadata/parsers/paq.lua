@@ -22,7 +22,9 @@ return {
 			end
 		end
 
-		vim.g.paq_plugins = vim.tbl_map(function(item) return vim.trim(item) end, plugins)
+		vim.g.paq_plugins = vim.tbl_map(function(item)
+			return vim.trim(item)
+		end, plugins)
 
 		return vim.g.paq_plugins
 	end,

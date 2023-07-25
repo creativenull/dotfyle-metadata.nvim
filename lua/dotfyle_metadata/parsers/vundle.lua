@@ -8,6 +8,6 @@ return {
 	parse = function()
 		return vim.tbl_map(function(plugin)
 			return plugin.name_spec
-		end, vim.tbl_values(vim.g['vundle#bundles']))
+		end, vim.tbl_values(vim.g["vundle#bundles"]))
 	end,
 }

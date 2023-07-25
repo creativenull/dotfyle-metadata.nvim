@@ -9,7 +9,7 @@ return {
 	parse = function()
 		return vim.tbl_map(function(plugin)
 			-- 'https://github.com/username/repo'
-      return plugin.url:match("https?://.-/([^/]+/[^/]+)")
+			return plugin.url:match("https?://.-/([^/]+/[^/]+)")
 		end, vim.tbl_values(_G.packer_plugins))
 	end,
 }
