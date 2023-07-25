@@ -59,10 +59,6 @@ local function get_keymaps()
 	return keymaps
 end
 
-local function format_file()
-
-end
-
 function M.generate()
 	local leader = get_mapleader()
 	local plugin_manager, plugins = get_plugins_info()
