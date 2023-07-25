@@ -1,5 +1,7 @@
 local M = {}
 
+local dotfyle_path = string.format("%s/dotfyle.json", vim.fn.stdpath("config"))
+
 local parsers = {
 	require("dotfyle_metadata.parsers.plug"),
 	require('dotfyle_metadata.parsers.packer'),
@@ -49,11 +51,22 @@ function M.generate()
 	}
 
 	local json = vim.json.encode(dotfyle_ref)
-  local path = string.format("%s/dotfyle.json", vim.fn.stdpath("config"))
-	vim.fn.writefile({ json }, path)
+	vim.fn.writefile({ json }, dotfyle_path)
 
   vim.notify('[dotfyle] dotfyle.json generated!', nil, nil)
-  vim.cmd(string.format('edit %s', path))
+  vim.cmd(string.format('edit %s', dotfyle_path))
+
+  -- TODO: Try something else instead of this complexity
+  if vim.fn.executable('jq') then
+    vim.cmd('%!jq')
+    vim.cmd('write')
+  elseif vim.fn.executable('prettier') then
+    vim.cmd('%!prettier --no-color --stdin --stdin-filepath %')
+    vim.cmd('write')
+  elseif vim.fn.has('python3') then
+    vim.cmd('%!python3 -m json.tool')
+    vim.cmd('write')
+  end
 end
 
 return M
