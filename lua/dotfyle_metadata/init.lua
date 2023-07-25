@@ -37,15 +37,30 @@ local function get_mapleader()
   return leader
 end
 
+local function get_keymaps()
+  local keymaps = vim.api.nvim_get_keymap('')
+  -- TODO: remove the default keymaps
+  for _, map in pairs(keymaps) do
+    if map.callback then
+      -- HACK: can't encode a function
+      -- but we should probably write out what it does
+      map.callback = "function"
+    end
+  end
+  return keymaps
+end
+
 function M.generate()
 	local leader = get_mapleader()
 	local plugin_manager, plugins = get_plugins_info()
+  local keymaps = get_keymaps()
 
   -- Json structure
 	local dotfyle_ref = {
 		["leaderKey"] = leader,
 		["pluginManager"] = plugin_manager,
 		["plugins"] = plugins,
+    ["keymaps"] = keymaps
 	}
 
 	local json = vim.json.encode(dotfyle_ref)
