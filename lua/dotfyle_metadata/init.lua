@@ -17,7 +17,7 @@ function M.generate()
 		["plugins"] = plugins,
 		["keymaps"] = get_keymaps(),
 		["lspServers"] = get_servers(),
-    ["masonTools"] = get_mason_tools(),
+		["masonTools"] = get_mason_tools(),
 	}
 
 	local json = vim.json.encode(dotfyle_ref)
