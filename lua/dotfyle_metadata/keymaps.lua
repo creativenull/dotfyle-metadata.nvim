@@ -1,3 +1,5 @@
+---Get all user defined keymaps
+---@return table
 return function()
 	local keymaps = vim.api.nvim_get_keymap("")
 	for _, map in pairs(keymaps) do

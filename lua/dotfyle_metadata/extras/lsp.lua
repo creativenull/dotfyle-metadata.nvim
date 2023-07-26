@@ -1,3 +1,5 @@
+---Get the user configured lsp servers
+---@return table
 return function()
   local loaded, lspconfig = pcall(require, 'lspconfig')
 

@@ -1,3 +1,5 @@
+---Get the user defined mapleader, else show default
+---@return string
 return function()
 	local leader = vim.g.mapleader
 	if not leader then

@@ -1,5 +1,7 @@
+---Get the installed lsp servers and tools by mason.nvim
+---@return table
 return function()
-	local loaded, mason = pcall(require, "mason")
+	local loaded, _ = pcall(require, "mason")
 
 	if not loaded then
 		return {}

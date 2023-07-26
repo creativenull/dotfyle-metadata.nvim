@@ -8,6 +8,9 @@ local parsers = {
 	require("dotfyle_metadata.plugins.vundle"),
 }
 
+---Check the user installed plugin manager and get
+---list of installed plugins
+---@return string, table
 return function()
 	for _, p in pairs(parsers) do
 		if p.installed() then
