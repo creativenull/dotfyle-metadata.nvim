@@ -1,35 +1,13 @@
+local get_plugins = require('dotfyle_metadata.plugins')
 local get_mapleader = require("dotfyle_metadata.extensions.mapleader")
 local get_keymaps = require("dotfyle_metadata.extensions.keymaps")
 local get_servers = require("dotfyle_metadata.extensions.lsp")
 
 local M = {}
-
 local dotfyle_path = string.format("%s/dotfyle.json", vim.fn.stdpath("config"))
 
-local parsers = {
-	require("dotfyle_metadata.parsers.plug"),
-	require("dotfyle_metadata.parsers.packer"),
-	require("dotfyle_metadata.parsers.lazy"),
-	require("dotfyle_metadata.parsers.paq"),
-	require("dotfyle_metadata.parsers.minpac"),
-	require("dotfyle_metadata.parsers.dein"),
-	require("dotfyle_metadata.parsers.vundle"),
-}
-
-local function get_plugins_info()
-	for _, p in pairs(parsers) do
-		if p.installed() then
-			return p.name, p.parse()
-		end
-	end
-
-	-- default is unknown
-	local unknown = require("dotfyle_metadata.parsers.unknown")
-	return unknown.name, unknown.parse()
-end
-
 function M.generate()
-	local plugin_manager, plugins = get_plugins_info()
+	local plugin_manager, plugins = get_plugins()
 
 	-- Json structure
 	local dotfyle_ref = {
