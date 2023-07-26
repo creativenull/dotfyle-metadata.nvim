@@ -4,7 +4,7 @@ return function()
 	local keymaps = vim.api.nvim_get_keymap("")
 	for _, map in pairs(keymaps) do
 		-- translate the strings into something usable by :map
-		map.lhs = vim.fn.keytrans(map.lhs)
+		map.lhs = vim.api.nvim_replace_termcodes(map.lhs, true, true, false)
 
 		if map.rhs == "" then
 			-- replace the empty string with empty modifier
