@@ -9,11 +9,11 @@ return function()
 
 	local install_dir = string.format("%s/bin", vim.env.MASON)
 
-  local files
+	local files
 	files = vim.split(vim.fn.globpath(install_dir, "*"), "\n", {})
-  files = vim.tbl_map(function(file)
-    return vim.fn.fnamemodify(file, ':t')
-  end, files)
+	files = vim.tbl_map(function(file)
+		return vim.fn.fnamemodify(file, ":t")
+	end, files)
 
 	return files
 end
