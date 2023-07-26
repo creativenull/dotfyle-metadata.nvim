@@ -1,5 +1,18 @@
 ---Get all user defined keymaps
 ---@return table
+
+local function check_map(keymap)
+  -- check if the mapping is one we want to include
+  -- TODO: check for more than just <Plug>
+
+  if string.find(keymap.lhs, "<Plug>")
+    then
+      return false
+  end
+
+  return true
+end
+
 return function()
 	local keymaps = {}
 	local global_keymaps = vim.api.nvim_get_keymap("")
@@ -18,13 +31,15 @@ return function()
 			map.rhs = "<Nop>"
 		end
 
-		table.insert(keymaps, {
-			mode = map.mode,
-			lhs = map.lhs,
-			rhs = map.rhs,
-			desc = map.desc == nil and "" or map.desc,
-			noremap = map.noremap == 1,
-		})
+    if check_map(map) then
+      table.insert(keymaps, {
+        mode = map.mode,
+        lhs = map.lhs,
+        rhs = map.rhs,
+        desc = map.desc == nil and "" or map.desc,
+        noremap = map.noremap == 1,
+      })
+    end
 	end
 
 	return keymaps
