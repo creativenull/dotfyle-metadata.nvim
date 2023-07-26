@@ -3,8 +3,12 @@
 
 local function check_map(keymap)
   -- check if the mapping is one we want to include
-  -- TODO: check for more than just <Plug>
 
+  if  keymap.mode ~= "n" and keymap.mode ~= "i"
+  and keymap.mode ~= "x" and keymap.mode ~= "v"
+  then
+    return false
+  end
   if string.find(keymap.lhs, "<Plug>")
     then
       return false
