@@ -26,7 +26,7 @@ return function()
 
 	for _, map in pairs(global_keymaps) do
 		-- translate the strings into something usable by :map
-		map.lhs = vim.fn.maparg(map.lhsraw, map.mode, false, true).lhs
+		map.lhs = vim.fn.maparg(map.lhs, map.mode, false, true).lhs
 
 		if map.callback then
 			-- check if the mapping is a function
