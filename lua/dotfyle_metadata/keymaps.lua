@@ -6,6 +6,7 @@ local function check_map(keymap)
 
   if  keymap.mode ~= "n" and keymap.mode ~= "i"
   and keymap.mode ~= "x" and keymap.mode ~= "v"
+  and keymap.mode ~= "t"
   then
     return false
   end
