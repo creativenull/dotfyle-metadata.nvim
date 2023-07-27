@@ -1,3 +1,4 @@
+local uv = vim.loop
 local get_plugins = require("dotfyle_metadata.plugins")
 local get_mapleader = require("dotfyle_metadata.mapleader")
 local get_keymaps = require("dotfyle_metadata.keymaps")
@@ -22,7 +23,10 @@ function M.generate()
 	}
 
 	local json = vim.json.encode(dotfyle_ref)
-	vim.fn.writefile({ json }, M.dotfyle_path)
+
+	local fd = assert(uv.fs_open(M.dotfyle_path, "w", 438))
+	assert(uv.fs_write(fd, json))
+	assert(uv.fs_close(fd))
 
 	vim.notify("[dotfyle-metadata] json file generated, open with `:DotfyleOpen`", nil, nil)
 end
