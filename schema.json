@@ -36,7 +36,7 @@
       }
     },
     "keymaps": {
-      "description": "List of tree-sitter parsers installed by the user via nvim-treesitter plugin.",
+      "description": "User defined keymaps.",
       "type": "array",
       "items": {
         "type": "object",
