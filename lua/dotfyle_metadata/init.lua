@@ -24,7 +24,7 @@ function M.generate()
 		["treesitterParsers"] = get_treesitter_parsers(),
 	}
 
-	local json = vim.json.encode(dotfyle_ref)
+	local json = vim.fn.json_encode(dotfyle_ref)
 
 	local fd = assert(uv.fs_open(M.dotfyle_path, "w", 438))
 	assert(uv.fs_write(fd, json))
