@@ -3,7 +3,11 @@ if vim.g.loaded_dotfyle_metadata then
 end
 
 local dm = require("dotfyle_metadata")
-vim.api.nvim_create_user_command("DotfyleGenerate", dm.generate, { desc = "Generate a dotfyle.json file" })
+
+vim.api.nvim_create_user_command("DotfyleGenerate", function(ev)
+	dm.generate(ev.fargs)
+end, { nargs = "*", desc = "Generate a dotfyle.json file" })
+
 vim.api.nvim_create_user_command(
 	"DotfyleOpen",
 	string.format("edit %s", dm.dotfyle_path),
