@@ -1,7 +1,7 @@
 local Distribution = {
   AstroNvim = "AstroNvim",
   NvChad = "NvChad",
-  LunarNvim = "LunarNvim",
+  LunarVim = "LunarVim",
   Unknown = "Unknown"
 }
 
@@ -20,7 +20,7 @@ return function()
 
   local lunarnvim = pcall(require, "lunarnvim");
   if lunarnvim ~= nil then
-    return Distribution.LunarNvim
+    return Distribution.LunarVim
   end
 
   return Distribution.Unknown
