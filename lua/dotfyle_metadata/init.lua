@@ -3,6 +3,7 @@ local get_plugins = require("dotfyle_metadata.plugins")
 local get_mapleader = require("dotfyle_metadata.mapleader")
 local get_keymaps = require("dotfyle_metadata.keymaps")
 local get_servers = require("dotfyle_metadata.extras.lsp")
+local get_distribution = require("dotfyle_metadata.extras.distribution")
 local get_treesitter_parsers = require("dotfyle_metadata.extras.treesitter")
 local get_mason_tools = require("dotfyle_metadata.extras.mason")
 
@@ -20,6 +21,7 @@ function M.generate(options)
   metadata.lspServers = get_servers()
   metadata.masonTools = get_mason_tools()
   metadata.treesitterParsers = get_treesitter_parsers()
+  metadata.distribution = get_distribution()
 
   if vim.tbl_contains(options, '--keymaps') then
     -- Opt-in to show keymaps, since it blows up the file size
