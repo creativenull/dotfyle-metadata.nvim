@@ -71,6 +71,10 @@
       "items": {
         "type": "string"
       }
+    },
+    "distribution": {
+      "description": "The detected distribution of the user's neovim setup.",
+      "type": "string"
     }
   }
 }
