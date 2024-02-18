@@ -18,8 +18,8 @@ return function()
     return Distribution.NvChad
   end
 
-  local lunarnvim = pcall(require, "lunarnvim");
-  if lunarnvim ~= nil then
+  local lunarvim = pcall(require, "lunarvim");
+  if lunarvim ~= nil then
     return Distribution.LunarVim
   end
 
