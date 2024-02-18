@@ -2,7 +2,7 @@ local Distribution = {
   AstroNvim = "AstroNvim",
   NvChad = "NvChad",
   LunarVim = "LunarVim",
-  Unknown = "Unknown"
+  Custom = "Custom"
 }
 
 ---Get the nvim distro
@@ -25,5 +25,5 @@ return function()
     return Distribution.LunarVim
   end
 
-  return Distribution.Unknown
+  return Distribution.Custom
 end
