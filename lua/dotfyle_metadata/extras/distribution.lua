@@ -8,18 +8,20 @@ local Distribution = {
 ---Get the nvim distro
 ---@return string
 return function()
-  local astronvim = pcall(require, "astronvim");
-  if astronvim ~= nil then
+  local loaded
+
+  loaded, _ = pcall(require, "astronvim");
+  if loaded then
     return Distribution.AstroNvim
   end
 
-  local nvchad = pcall(require, "nvchad");
-  if nvchad ~= nil then
+  loaded = pcall(require, "nvchad");
+  if loaded then
     return Distribution.NvChad
   end
 
-  local lunarvim = pcall(require, "lunarvim");
-  if lunarvim ~= nil then
+  loaded = pcall(require, "lunarvim");
+  if loaded then
     return Distribution.LunarVim
   end
 
