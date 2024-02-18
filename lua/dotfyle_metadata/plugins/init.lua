@@ -14,7 +14,11 @@ local parsers = {
 return function()
 	for _, p in pairs(parsers) do
 		if p.installed() then
-			return p.name, p.parse()
+			local plugins = p.parse()
+			-- sort the plugins A-Za-z
+			table.sort(plugins)
+
+			return p.name, plugins
 		end
 	end
 
