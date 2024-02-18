@@ -7,5 +7,10 @@ return function()
 		return {}
 	end
 
-	return ts.get_ensure_installed_parsers()
+	local parsers = ts.get_ensure_installed_parsers()
+
+	-- sort the plugins A-Za-z
+	table.sort(parsers)
+
+	return parsers
 end
