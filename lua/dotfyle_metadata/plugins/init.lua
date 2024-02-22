@@ -6,6 +6,7 @@ local parsers = {
 	require("dotfyle_metadata.plugins.minpac"),
 	require("dotfyle_metadata.plugins.dein"),
 	require("dotfyle_metadata.plugins.vundle"),
+	require("dotfyle_metadata.plugins.packages"),
 }
 
 ---Check the user installed plugin manager and get
