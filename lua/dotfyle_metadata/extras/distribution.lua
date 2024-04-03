@@ -12,7 +12,6 @@ local supported_distributions = {
 			return pcall(require, "nvchad")
 		end,
 	},
-
 	LunarVim = {
 		is_enabled = function()
 			return pcall(require, "lunarvim")
