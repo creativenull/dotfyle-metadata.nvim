@@ -7,7 +7,13 @@ return function()
 		return {}
 	end
 
-	local servers = lspconfig.util.available_servers()
+	local servers
+
+	if lspconfig.util._available_servers ~= nil then
+		servers = lspconfig.util._available_servers()
+	else
+		servers = lspconfig.util.available_servers()
+	end
 
 	-- sort the plugins A-Za-z
 	table.sort(servers)
