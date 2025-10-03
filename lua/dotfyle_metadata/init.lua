@@ -14,19 +14,19 @@ M.dotfyle_path = string.format("%s/dotfyle.json", vim.fn.stdpath("config"))
 function M.generate(options)
 	local plugin_manager, plugins = get_plugins()
 
-  local metadata = {}
-  metadata.leaderKey = get_mapleader()
-  metadata.pluginManager = plugin_manager
-  metadata.plugins = plugins
-  metadata.lspServers = get_servers()
-  metadata.masonTools = get_mason_tools()
-  metadata.treesitterParsers = get_treesitter_parsers()
-  metadata.distribution = get_distribution()
+	local metadata = {}
+	metadata.leaderKey = get_mapleader()
+	metadata.pluginManager = plugin_manager
+	metadata.plugins = plugins
+	metadata.lspServers = get_servers()
+	metadata.masonTools = get_mason_tools()
+	metadata.treesitterParsers = get_treesitter_parsers()
+	metadata.distribution = get_distribution()
 
-  if vim.tbl_contains(options, '--keymaps') then
-    -- Opt-in to show keymaps, since it blows up the file size
-    metadata.keymaps = get_keymaps()
-  end
+	if vim.tbl_contains(options, "--keymaps") then
+		-- Opt-in to show keymaps, since it blows up the file size
+		metadata.keymaps = get_keymaps()
+	end
 
 	local json = vim.fn.json_encode(metadata)
 
